@@ -7,14 +7,18 @@ output:
     theme: tactile
     highlight: github
     toc: TRUE
+bibliography: library.bib
+# I'm using Zotero and some extensions of it
+# consulting with the following site.
+# http://www.janfreyberg.com/blog/2017-05-27-workflow-papers-rmarkdown/
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
 # set locale to Japanese
 Sys.setlocale(category = "LC_ALL", locale = "Japanese")
-# Required packages
 
-list.of.packages <- c("tidyr", "kableExtra", "prettydoc")
+# Required packages (must be executed before everything)
+list.of.packages <- c("tidyr", "kableExtra", "prettydoc", "citr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
@@ -46,3 +50,8 @@ ov %>%
 ```
 
 # The Goal of the Program
+Humans are essentially cultural. Our lives would look fundamentally different without the culturally-transmitted knowledge, skills, and habits [@mesoudiCulturalEvolutionHow2011].
+
+[@markusCultureSelfImplications1991]
+
+# Reference
