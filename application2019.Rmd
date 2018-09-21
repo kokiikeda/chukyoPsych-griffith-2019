@@ -1,0 +1,48 @@
+---
+title: Application for the Financial Support for the Study Abroad Program in Psychology 2019
+author: "Koki Ikeda"
+date: "September 20, 2018"
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    toc: TRUE
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
+# set locale to Japanese
+Sys.setlocale(category = "LC_ALL", locale = "Japanese")
+# Required packages
+
+list.of.packages <- c("tidyr", "kableExtra", "prettydoc")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+library(tidyr)
+library(kableExtra)
+```
+
+# Overview of the Program
+
+```{r table2, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
+ov <- matrix(data = c("Period", "Feb. 2019 (3 weeks)",
+                      "City, Country", "Brisbane, Australia",
+                      "School", "[Griffith University, Nathan Campus](https://www.griffith.edu.au/about-griffith/campuses-facilities/nathan)",
+                      "Number of Students", "30",
+                      "Number of Recipients", "5",
+                      "Year of Students", "2nd or 3rd, All from Psychology Dept.",
+                      "Contents of Program", "Lecture & Research",
+                      "Website", "[Chukyo University Net Campus](https://nc.chukyo-u.ac.jp/gakubu/shinri/psychology/index.html#sec_3)"),
+             ncol = 2, byrow = TRUE)
+
+# The kable function does not properly work with html_pretty
+ov %>%
+  kable(caption = "for the Academic Year 2019") %>%
+  kable_styling(bootstrap_options = c( "bordered"),
+                full_width = FALSE,
+                position = "left",
+                font_size = 16) %>%
+  column_spec(1, width = "20em")
+```
+
+# The Goal of the Program
