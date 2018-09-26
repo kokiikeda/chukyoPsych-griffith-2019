@@ -1,12 +1,14 @@
 ---
 title: Application for the Financial Support for the Study Abroad Program in Psychology 2019
-author: "Koki Ikeda"
+author: "Drafted by Koki Ikeda"
 date: "September 20, 2018"
-output:
-  prettydoc::html_pretty:
-    theme: tactile
-    highlight: github
-    toc: TRUE
+# output:
+#   prettydoc::html_pretty:
+#     theme: tactile
+#     highlight: github
+#     toc: TRUE
+output: word_document
+always_allow_html: yes
 bibliography: library.bib
 # I'm using Zotero and some extensions of it
 # consulting with the following site.
@@ -18,30 +20,36 @@ bibliography: library.bib
 Sys.setlocale(category = "LC_ALL", locale = "Japanese")
 
 # Required packages (must be executed before everything)
-list.of.packages <- c("tidyr", "kableExtra", "prettydoc", "citr")
+list.of.packages <- c("tidyverse", "kableExtra", "prettydoc", 
+                      "citr", "DiagrammeR", "pander")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
-library(tidyr)
+library(tidyverse)
 library(kableExtra)
+library(prettydoc)
+library(citr)
+library(DiagrammeR)
+library(pander)
 ```
 
 # Overview of the Program
 
 ```{r table2, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
-ov <- matrix(data = c("Period", "Feb. 2019 (3 weeks)",
-                      "City, Country", "Brisbane, Australia",
+ov <- data.frame(matrix(data = c("Period", "Feb. 2019 (3 weeks)",
+                      "City, Country", "Brisbane, QL, Australia",
                       "School", "[Griffith University, Nathan Campus](https://www.griffith.edu.au/about-griffith/campuses-facilities/nathan)",
                       "Number of Students", "30",
-                      "Number of Recipients", "5",
-                      "Year of Students", "2nd or 3rd, All from Psychology Dept.",
-                      "Contents of Program", "Lecture & Research",
+                      "Number of Expected Recipients of the Finalncial Support", "5",
+                      "Year of Students", "Mainly 2nd or 3rd, All from the Psychology Dept.",
+                      "Contents of Program", "Preparatory English Course & Independent Research Project",
                       "Website", "[Chukyo University Net Campus](https://nc.chukyo-u.ac.jp/gakubu/shinri/psychology/index.html#sec_3)"),
-             ncol = 2, byrow = TRUE)
+             ncol = 2, byrow = TRUE))
+colnames(ov) <- c("", "")
 
-# The kable function does not properly work with html_pretty
+#The kable function does not properly work with html_pretty
 ov %>%
-  kable(caption = "for the Academic Year 2019") %>%
+  kable() %>%
   kable_styling(bootstrap_options = c( "bordered"),
                 full_width = FALSE,
                 position = "left",
@@ -50,8 +58,79 @@ ov %>%
 ```
 
 # The Goal of the Program
-Humans are essentially cultural. Our lives would look fundamentally different without the culturally-transmitted knowledge, skills, and habits [@mesoudiCulturalEvolutionHow2011].
+Humans are essentially cultural. Our lives would look fundamentally different without the culturally-transmitted knowledge, skills, and habits [@henrichSecretOurSuccess2015]. The role of culture to foster one's psychology is also indisputable [@markusCultureSelfImplications1991]. Naturally, such cultural influences could be refleted on the phenotypes of various mental disorders too, yielding the idea of cross-cultural psychiatry [@kirmayerCulturalPsychiatryHistorical2007]. For example, "taijin kyofusho 対人恐怖症" is believed to be a culture-bound subtype of social phobia, which has been observed espeically among Japanese people **[citation]**. To understand why some psychological traits are observed in one culture (e.g. Japanese) and not other cultures and, in the case of disorders, develop proper treatments based on the considerations of different cultural backgrounds, could have an immense pratcial importance. It is, however, quite rare for the majority of Japanese psychology students to study such cultural differences by immersing themselves in a different cultural environment. Given the recent increase of the number of foreign residents in Japan **[citation]**, it is an urgent task to establish a general education program to foster specialists in psychology to work with these incoming population either in clinical or business settings. Thus, the goal of this program is to provide an opportunity for students who are planning to engage in psychology-related practices in the future to broaden their knowledge and experience through active interactions with the local students as well as psychologists in a different culture, namely, Brisbane, Australia. 
 
-[@markusCultureSelfImplications1991]
+# Program Details
+
+## Course Overview
+The program is registered as a selective course offered by the Psychoogy Department (「心理学海外演習」), which is specifically designed for the psychology majors and open in the fall semester every year. The students above 2<sup>nd</sup> year can be enrolled. Two faculties from the Psychology and World Englishes Departments, the latter of which holds a ESL/EFL certification, jointly design and manage the entire course with the help from those in Griffith University (see below). The semester course in Chukyo University will be mainly instructed by the latter and the research project will be supervised by the former. The 3 Week Program will also be attended by the former. In addition, another facutly from the Psychology Department will be assigned as a back-up member in Japan during the 3 weeks program in case of emergency. Due to the relatively small size of the program, the number of the students is limited to around 30 to provide effective education. 
+
+The 3 week program in Griifith University is dsgined and conducted by the Griffith English Language Institute (GELI), and accomodations and other general supports for the students is offered by International Business Development Unit (IBDU) of the university.
+
+```{r, fig.align= 'center', fig.width=9, echo=FALSE, messeage=FALSE, warning=FALSE}
+mermaid("
+gantt
+dateFormat YYYY-MM-DD
+title Timeline of the Program
+
+section Calender
+Spring Semester: done, a1, 2019-04-01, 2019-07-25
+Summer Vac.: done, a2, 2019-07-26, 2019-09-25
+Fall Semester: done, a3, 2019-09-26, 2020-02-06
+Spring Vac.: done, a4, 2020-02-07, 2020-03-31
+
+section Courses
+Preparation: active, b1, 2019-04-01, 2019-09-25
+Chukyo: crit, active, b3, 2019-09-26, 2020-02-06
+Griffith: crit, active, b4, 2020-02-07, 2020-03-02
+"
+)
+```
+
+## Preparation
+The expected students are strongly recommended to take the TOEIC test before being registered in the course to pass the criteria for the possible financial support (see the section "Selection Criteria for the Financial Support"). Additional mentoring services are provided by the faculty of the Psychology Department to give the general information of the course including the financial support system and introduce effective and eligible means to improve their English skills independently.
+
+## Semester Course 
+Students will take a preparatory semester course in Chukyo University before going to Australia, in which they practice English conversation, and prepare small-scale research projects focusing on a topic in psychology. 
+
+## Research Project
+The students will form small groups of 4 to 5 members to design and implement the projects.
+
+## Three Week Program in Australia
+In Griffith University, the first half of the course will be devoted to improve the students' English abilities to make them sufficiently confident to continue on the second half of the program. Students will work on their own research projects in the latter part. They are expected to work together with Griffith University students to refine the research methods (e.g. wordings of questionanire items) and collect data from other Griffith students who are not participated in the design proces, in order to make comparisons with Japanese counterparts. Finally they will make academic oral presentations summarizing their projects, inviting the Griffith students to deepen the mutal understandings and possibly continue the dialogue about issues in cross-cultural psychology in the future.
+
+# Selection Criteria for the Financial Support
+Candidate students must have GPA above 2.8 (by the standard of Chukyo University) and the TOEIC score above 400 points. 
+
+# Application Check Points
+## 1
+1. Does the program have concrete goals that can be easily understood by Japanese taxpayers?
+2. Is the goal of the program properly set considering the intention and purpose of the system and corresponding to the types of the program?
+3. Is the goal set to be in an appropriate level?
+4. Is the goal for students set clearly?
+5. Does the program have a clear expectation for the students to be globalized and highly qualified?
+6. Does the program contribute to the improvement of students' English skills?
+7. Does the program motivate the students to review and improve their future life plans?
+8. Does the program reflect students' major and its academic characteristics?
+9. (not applicable to our program)
+10. Does the program motivate the students to plan staying aborad for a longer term in the future?
+11. Are there interactions with the students of the local university?
+12. Is the total number of students participated in the program appropriate?
+13. Is the number of students supported by the system appropriate considering the total number of the students participated in the program?
+14. Is the program related to university credits?
+15. (not applicable to our program)
+16. (not applicable to our program)
+17. Is the program properly unified with the credited course, English learning, and speciallized course to be effective?
+
+## 2
+1. Is the selection procedure for students appropriate?
+2. Are the students properly informed?
+3. Is the information about university credits well explained to the students before the commencement of the program?
+4. Will the student receive appropriate local support for staying abroad?
+5. Is there a sufficient risk management system for students?
+6. Does the faculty responsible for the program have sufficient and appropriate know-how?
+
+## 3
+1. 
 
 # Reference
