@@ -4,15 +4,15 @@ author: "Drafted by Koki Ikeda"
 date: "September 20, 2018"
 
 # Output for html
-output:
-  prettydoc::html_pretty:
-    theme: tactile
-    highlight: github
-    toc: TRUE
-    toc_depth: 2
+# output:
+#   prettydoc::html_pretty:
+#     theme: tactile
+#     highlight: github
+#     toc: TRUE
+#     toc_depth: 2
 # Output for Word
-#output: word_document
-#always_allow_html: yes
+output: word_document
+always_allow_html: yes
 
 bibliography: library.bib
 # I'm using Zotero and some extensions of it
