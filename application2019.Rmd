@@ -1,53 +1,57 @@
 ---
-title: Application for the Financial Support for the Study Abroad Program in Psychology 2019
+title: Application for the JASSO Financial Support for the Study Abroad Program in Psychology 2019
 author: "Drafted by Koki Ikeda"
 date: "September 20, 2018"
-# output:
-#   prettydoc::html_pretty:
-#     theme: tactile
-#     highlight: github
-#     toc: TRUE
-output: word_document
-always_allow_html: yes
+
+# Output for html
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+    toc: TRUE
+    toc_depth: 2
+# Output for Word
+# output: word_document
+# always_allow_html: yes
+
 bibliography: library.bib
 # I'm using Zotero and some extensions of it
 # consulting with the following site.
 # http://www.janfreyberg.com/blog/2017-05-27-workflow-papers-rmarkdown/
 ---
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# Run this before knitting.
+list.of.packages <- c("tidyverse", "kableExtra", "prettydoc", 
+                      "citr", "ggthemes", "wesanderson")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, reops="http://cran.rstudio.com/")
+```
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE, results="hide"}
 # set locale to Japanese
 Sys.setlocale(category = "LC_ALL", locale = "Japanese")
 
-# Required packages (must be executed before everything)
-list.of.packages <- c("tidyverse", "kableExtra", "prettydoc", 
-                      "citr", "DiagrammeR", "pander")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
-
+# Required packages
 library(tidyverse)
-library(kableExtra)
 library(prettydoc)
 library(citr)
-library(DiagrammeR)
-library(pander)
 ```
 
 # Overview of the Program
-
-```{r table2, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 ov <- data.frame(matrix(data = c("Period", "Feb. 2019 (3 weeks)",
                       "City, Country", "Brisbane, QL, Australia",
                       "School", "[Griffith University, Nathan Campus](https://www.griffith.edu.au/about-griffith/campuses-facilities/nathan)",
                       "Number of Students", "30",
-                      "Number of Expected Recipients of the Finalncial Support", "5",
+                      "Number of Expected Recipients of the Finalncial Support", "??",
                       "Year of Students", "Mainly 2nd or 3rd, All from the Psychology Dept.",
-                      "Contents of Program", "Preparatory English Course & Independent Research Project",
-                      "Website", "[Chukyo University Net Campus](https://nc.chukyo-u.ac.jp/gakubu/shinri/psychology/index.html#sec_3)"),
+                      "Contents of Program", "English Course & Independent Research Project",
+                      "Website", "[Website of the Existent Study Abroad Program](https://nc.chukyo-u.ac.jp/gakubu/shinri/psychology/index.html#sec_3)"),
              ncol = 2, byrow = TRUE))
 colnames(ov) <- c("", "")
 
 #The kable function does not properly work with html_pretty
+library(kableExtra)
 ov %>%
   kable() %>%
   kable_styling(bootstrap_options = c( "bordered"),
@@ -58,52 +62,77 @@ ov %>%
 ```
 
 # The Goal of the Program
-Humans are essentially cultural. Our lives would look fundamentally different without the culturally-transmitted knowledge, skills, and habits [@henrichSecretOurSuccess2015]. The role of culture to foster one's psychology is also indisputable [@markusCultureSelfImplications1991]. Naturally, such cultural influences could be refleted on the phenotypes of various mental disorders too, yielding the idea of cross-cultural psychiatry [@kirmayerCulturalPsychiatryHistorical2007]. For example, "taijin kyofusho 対人恐怖症" is believed to be a culture-bound subtype of social phobia, which has been observed espeically among Japanese people **[citation]**. To understand why some psychological traits are observed in one culture (e.g. Japanese) and not other cultures and, in the case of disorders, develop proper treatments based on the considerations of different cultural backgrounds, could have an immense pratcial importance. It is, however, quite rare for the majority of Japanese psychology students to study such cultural differences by immersing themselves in a different cultural environment. Given the recent increase of the number of foreign residents in Japan **[citation]**, it is an urgent task to establish a general education program to foster specialists in psychology to work with these incoming population either in clinical or business settings. Thus, the goal of this program is to provide an opportunity for students who are planning to engage in psychology-related practices in the future to broaden their knowledge and experience through active interactions with the local students as well as psychologists in a different culture, namely, Brisbane, Australia. 
+Humans are essentially cultural. Our lives would look fundamentally different without the culturally-transmitted knowledge, skills, and habits [@henrichSecretOurSuccess2015]. The role of culture to foster one's psychology is also indisputable [@markusCultureSelfImplications1991]. Naturally, such cultural influences could be refleted on the phenotypes of various mental disorders too, yielding the idea of cross-cultural psychiatry [@kirmayerCulturalPsychiatryHistorical2007]. For example, "taijin kyofusho 対人恐怖症" is believed to be a culture-bound subtype of social phobia, which has been observed espeically among Japanese people [citation?]. To understand why some psychological traits are observed in one culture (e.g. Japanese) and not other cultures and, in the case of disorders, develop proper treatments based on the considerations of different cultural backgrounds, could have an immense pratcial importance. It is, however, quite rare for the majority of Japanese psychology students to study such cultural differences by immersing themselves in a different cultural environment. Given the recent increase of the number of foreign residents in Japan [citation?], it is an urgent task to establish a general education program to foster specialists in psychology to work with these incoming population either in clinical or business settings. Thus, the goal of this program is to provide an opportunity for students who are planning to engage in psychology-related practices in the future to broaden their knowledge and experience through active interactions with the local students as well as psychologists in a different culture, namely, Brisbane, Australia.  
 
 # Program Details
 
 ## Course Overview
-The program is registered as a selective course offered by the Psychoogy Department (「心理学海外演習」), which is specifically designed for the psychology majors and open in the fall semester every year. The students above 2<sup>nd</sup> year can be enrolled. Two faculties from the Psychology and World Englishes Departments, the latter of which holds a ESL/EFL certification, jointly design and manage the entire course with the help from those in Griffith University (see below). The semester course in Chukyo University will be mainly instructed by the latter and the research project will be supervised by the former. The 3 Week Program will also be attended by the former. In addition, another facutly from the Psychology Department will be assigned as a back-up member in Japan during the 3 weeks program in case of emergency. Due to the relatively small size of the program, the number of the students is limited to around 30 to provide effective education. 
 
-The 3 week program in Griifith University is dsgined and conducted by the Griffith English Language Institute (GELI), and accomodations and other general supports for the students is offered by International Business Development Unit (IBDU) of the university.
+### Relation to the university credit 
+The program is based on the existent selective course offered by the Chukyo Psychoogy Department (「心理学海外演習」), which is specifically designed for the psychology majors and open in the fall semester every year. The students above 2<sup>nd</sup> year can be enrolled. The basic expenses are and will be fully supported by the department budget, except students' fee for the travel and enrolment in the program offered by Griffith Univeristy. Although the current program is mainly focusing on laerning English and overseas experience, further improvements will be implemented from the year 2019 as descrived below, which will provide more structured and psychology-oriented materials.
 
-```{r, fig.align= 'center', fig.width=9, echo=FALSE, messeage=FALSE, warning=FALSE}
-mermaid("
-gantt
-dateFormat YYYY-MM-DD
-title Timeline of the Program
+### Instructors
+Two faculties from the Chukyo Psychology and World Englishes Departments jointly design and manage the entire course with the help from those in Griffith University (see below). The instructors are chosen based on the following criteria: (1) the former must have PhD in psychology and experiences in supervising students' research project, and be fluent in English; (2) the latter must hold a ESL/EFL certification and experience in teaching English to Japanese students. The semester course in Chukyo University will be mainly instructed by the latter and the research project will be supervised by the former. The preparation period in the spring semester and the 3 Week Program will also be overseen and attended by the former. In addition, another facutly from the Psychology Department will be assigned as a back-up member in Japan during the 3 weeks program in case of emergency. Due to the relatively small size of the program, the number of the students will be limited to around 30 to provide effective education. 
 
-section Calender
-Spring Semester: done, a1, 2019-04-01, 2019-07-25
-Summer Vac.: done, a2, 2019-07-26, 2019-09-25
-Fall Semester: done, a3, 2019-09-26, 2020-02-06
-Spring Vac.: done, a4, 2020-02-07, 2020-03-31
+### Griffith University
+The 3 week program in Griifith University will be dsgined and conducted by the Griffith English Language Institute ([GELI](https://www.griffith.edu.au/international/griffith-english-language-institute)), and accomodations and other general supports for the students will be offered by International Business Development Unit ([IBDU](https://www.griffith.edu.au/international/international-business-development-unit)) of the university. 
 
-section Courses
-Preparation: active, b1, 2019-04-01, 2019-09-25
-Chukyo: crit, active, b3, 2019-09-26, 2020-02-06
-Griffith: crit, active, b4, 2020-02-07, 2020-03-02
-"
+### Travel Arrangements
+Arrangements of flight tickets and travel insurance will be outsourced to external agencies, which has been working with Chukyo University in various overseas programs. Chukyo University also has an emergency contact service prioritized to the Chukyo students that provides medical, financial, and jurisdictional advices.
+
+### Selection Criteria for Applying JASSO Financial Support
+Candidate students must have GPA above 2.8 (by the standard of Chukyo University) and the TOEIC score above 400 points before being enrolled in the fall semester course. Moreovre, the fee to take the TOEIC test will be fully covered by the department budget and therefore free for all candidate students (as in year 2018 already).
+
+## Program Timeline
+```{r, fig.width=9, fig.height=3, echo=FALSE, message=FALSE, warning=FALSE}
+# Create a data frame of contents
+df <- data.frame(
+  content = factor(c("Spring Preparation", "Fall Semester Course"  ,"Griffith"),
+                   levels = c("Griffith", "Fall Semester Course", "Spring Preparation")),
+  start   = as.Date(c("2019-04-01", "2019-09-25", "2020-02-07")),
+  end     = as.Date(c("2019-07-25", "2020-02-01", "2020-03-03"))
 )
-```
+# Make the data frame long
+df <- gather(df, key = "timing", value = "time", -content)
 
-## Preparation
-The expected students are strongly recommended to take the TOEIC test before being registered in the course to pass the criteria for the possible financial support (see the section "Selection Criteria for the Financial Support"). Additional mentoring services are provided by the faculty of the Psychology Department to give the general information of the course including the financial support system and introduce effective and eligible means to improve their English skills independently.
+# Draw the plot
+library(ggthemes)
+library(wesanderson)
+ggplot(df, aes(time, content)) + 
+  geom_line(size = 10, aes(color = content)) +
+  scale_color_manual(values=wes_palette("BottleRocket1")) +
+  labs(x = '', y = '', title = 'Timeline of the Program') +
+  theme_economist(base_size = 15) +
+  theme(plot.title = element_text(hjust = 0.5), 
+        panel.grid.major.x = element_line(colour="gray", linetype = "dashed"), 
+        panel.grid.minor = element_blank(),
+        legend.position = 'none') +
+  scale_x_date(date_labels = "%b", limits = as.Date(c("2019-04-01", NA)), date_breaks = "1 month")
+``` 
 
-## Semester Course 
-Students will take a preparatory semester course in Chukyo University before going to Australia, in which they practice English conversation, and prepare small-scale research projects focusing on a topic in psychology. 
+### 1. Spring Preparation
+The expected students are required to take the free TOEIC test before being registered in the course to pass the criteria for the possible financial support (see the section "Selection Criteria for the Financial Support"). Additional mentoring services are provided by the instrucotr from the Psychology Department to give the general information of the course including the financial support system and introduce effective and eligible means to improve their English skills independently.
 
-## Research Project
-The students will form small groups of 4 to 5 members to design and implement the projects.
+### 2. Fall Semester Course 
+Students will take a preparatory fall semester course in Chukyo University before going to Australia, in which they practice English conversation, and prepare small-scale research projects focusing on a topic in psychology. Instructors will adjust the learning contents and project aims in order to fit the students' abilities, based on the pre-course TOEIC socre, GPA, and answers to the questionnaire.
 
-## Three Week Program in Australia
-In Griffith University, the first half of the course will be devoted to improve the students' English abilities to make them sufficiently confident to continue on the second half of the program. Students will work on their own research projects in the latter part. They are expected to work together with Griffith University students to refine the research methods (e.g. wordings of questionanire items) and collect data from other Griffith students who are not participated in the design proces, in order to make comparisons with Japanese counterparts. Finally they will make academic oral presentations summarizing their projects, inviting the Griffith students to deepen the mutal understandings and possibly continue the dialogue about issues in cross-cultural psychology in the future.
+### 3. Research Project
+The students will form small groups of 4 to 5 members to design and implement the projects. All topics must involve cultral comparisons between Japan and Australia, and may include issues either in (1) cognitive psychology such as the perception of facial expression, (2) social/industrial psychology such as the role of trust in communication, or (3) clinical psychology such as culture-bound mental disorders.
 
-# Selection Criteria for the Financial Support
-Candidate students must have GPA above 2.8 (by the standard of Chukyo University) and the TOEIC score above 400 points. 
+### 4. Three Week Program in Brisbane
+In Griffith University, the first half of the course will be devoted to improve the students' English abilities to make them sufficiently confident to continue on the second half of the program. Students will work on their own research projects in the latter part. They are expected to work together with Griffith University students to refine the research methods (e.g. wordings of questionanire items) and collect data from other Griffith students who are not participated in the design proces, in order to make comparisons with Japanese counterparts. Finally they will make academic oral presentations summarizing their projects, inviting the Griffith students to deepen the mutal understandings and continue dialogues about issues in cross-cultural psychology in the future.
 
-# Application Check Points
-## 1
+### 5. Program Evaluation
+Subjective and objective measures will be used to evaluate the effectiveness of the program. The students will be asked to answer an online questionnaire before the beginning fo the fall semester course and after the 3 week program. Questionnaire items may include those asking their confidence in their English abilities, the future outlook for uisng English in learning/research/business, and the willingness to communicate with poeple from different cultures. They will also be asked to give feedbacks to the program in a free description form. As for objective measure, the students will be required to take the free TOEIC test again after returning to Japan. 
+
+### 6. Alumni Community
+A student representative will be chosen from the enrolled students each year to write up a summary and commentary for the program. It will be posted on the official website of the Psychology Department to attract other students' attention who might particiapte in the program in the future. Moreover, an online community including both current and former participants will be formed to induce smooth exchange of infomration across students enrolled in different academic years. 
+
+### 7. Continuous Development
+The results of program evaluation and studnets' feedback will be shared by the faculties in Chukyo and Griffith University. Required adjustments will be implemented in the next year to improve the program continuously. 
+
+# Check Points Noted in the Application Form
+## The Contents
 1. Does the program have concrete goals that can be easily understood by Japanese taxpayers?
 2. Is the goal of the program properly set considering the intention and purpose of the system and corresponding to the types of the program?
 3. Is the goal set to be in an appropriate level?
@@ -122,7 +151,7 @@ Candidate students must have GPA above 2.8 (by the standard of Chukyo University
 16. (not applicable to our program)
 17. Is the program properly unified with the credited course, English learning, and speciallized course to be effective?
 
-## 2
+## Implementation
 1. Is the selection procedure for students appropriate?
 2. Are the students properly informed?
 3. Is the information about university credits well explained to the students before the commencement of the program?
@@ -130,7 +159,16 @@ Candidate students must have GPA above 2.8 (by the standard of Chukyo University
 5. Is there a sufficient risk management system for students?
 6. Does the faculty responsible for the program have sufficient and appropriate know-how?
 
-## 3
-1. 
+## Follow-Up
+1. Does the program properly monitor the effectiveness of the program and changes in students' awareness?
+2. Does the program properly measure the difference between the students who are enrolled in the program and others?
+3. Is there a meeting, symposium, or forming of SNS groups in which the reuslts of the program will be reported and which further facilitates interactions between students enrolled?
+4. Is it possible to provide information of the program to JASSO?
+
+## Eligibility and Future Outlook
+1. Is there means of improvement and continuous development of the program utilizing the results of evaluation and follow-up information? 
+2. Has the program already sent students overseas in the past?
+3. Is the program planned to be implmented in the future too?
+4. Is there a effort to obtain budget other than this system?
 
 # Reference
